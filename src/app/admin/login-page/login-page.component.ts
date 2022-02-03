@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+
 import {User} from '../../shared/interfaces';
 import {AuthService} from '../shared/services/auth.service';
-import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -40,28 +41,28 @@ export class LoginPageComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ])
-    })
+    });
   }
 
   submit() {
     if (this.form.invalid) {
-      return
+      return;
     }
 
-    this.submitted = true
+    this.submitted = true;
 
     const user: User = {
       email: this.form.value.email,
       password: this.form.value.password
-    }
+    };
 
     this.auth.login(user).subscribe(() => {
-      this.form.reset()
-      this.router.navigate(['/admin', 'dashboard'])
-      this.submitted = false
+      this.form.reset();
+      this.router.navigate(['/admin', 'dashboard']);
+      this.submitted = false;
     }, () => {
-      this.submitted = false
-    })
+      this.submitted = false;
+    });
   }
 }
 

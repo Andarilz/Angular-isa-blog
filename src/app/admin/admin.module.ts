@@ -47,6 +47,4 @@ import {AdminLoadingComponent} from './shared/admin-loading/admin-loading.compon
   exports: [RouterModule],
   providers: [AuthGuard, LoginGuard, AlertService]
 })
-export class AdminModule {
-
-}
+export class AdminModule {}
